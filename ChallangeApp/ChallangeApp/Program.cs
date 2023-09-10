@@ -1,16 +1,16 @@
-﻿String name = "Ewa";
-char kobieta = 'f';
-var herAge =20;
+﻿var imie = "Ewa";
+char plec = 'k';
+var wiek = 33;
 
-if (kobieta == 'f' && herAge < 33)
+if (imie == "Ewa" && wiek == 33 && plec == 'k')
+{
+    Console.WriteLine("Ewa, lat 33");
+}
+else if (plec == 'k' && wiek < 30)
 {
     Console.WriteLine("Kobieta ponizej 30 lat");
 }
-else if (name == "Ewa" && herAge > 25)
+else if (plec != 'k' && wiek < 18)
 {
-    Console.WriteLine("Ewa lat 33");
-}
-else if (kobieta != 'f' && herAge < 18 )
-{
-    Console.WriteLine("Nastoletni mężczyzna");
+    Console.WriteLine("Niepelnoletni mezczyzna");
 }
