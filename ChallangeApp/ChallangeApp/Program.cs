@@ -1,80 +1,86 @@
-﻿using System;
+﻿
 
-int number = 454151294;
-string numberAsString = number.ToString();
-char[] letters = numberAsString.ToArray();
+Employee employee1 = new Employee("Slawek","Kowalski", "38");
+Employee employee2 = new Employee("Juanusz","Nowak", "25");
+Employee employee3 = new Employee("Jacek", "Bilczynski", "33");
 
-
-int counter0 = 0;
-int counter1 = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counter5 = 0;
-int counter6 = 0;
-int counter7 = 0;
-int counter8 = 0;
-int counter9 = 0;
+employee1.AddScore(4);
+employee1.AddScore(2);
+employee1.AddScore(3);
+employee1.AddScore(8);
+employee1.AddScore(10);
 
 
-foreach (char letter in letters)
+
+employee2.AddScore(3);
+employee2.AddScore(5);
+employee2.AddScore(5);
+employee2.AddScore(6);
+employee2.AddScore(7);
+
+
+
+employee3.AddScore(5);
+employee3.AddScore(4);
+employee3.AddScore(5);
+employee3.AddScore(4);
+employee3.AddScore(5);
+
+
+
+
+
+List<Employee> employees = new List<Employee>()
 {
-    if (letter == '0')
+    employee1, employee2, employee3
+};
+
+int maxResult = 0;
+Employee employeeWithMaxResult = null;
+foreach( var employee in employees)
+{
+    if(employee.Result > maxResult) 
     {
-        counter0++;
+        employeeWithMaxResult = employee;
+        maxResult = employee.Result;
+
     }
-    else if (letter == '1')
-    {
-        counter1++;
-    }
-    else if (letter == '2')
-    {
-        counter2++;
-    }
-    else if (letter == '3')
-    {
-        counter3++;
-    }
-    else if (letter == '4')
-    {
-        counter4++;
-    }
-    else if (letter == '5')
-    {
-        counter5++;
-    }
-    else if (letter == '6')
-    {
-        counter6++;
-    }
-    else if (letter == '7')
-    {
-        counter7++;
-    }
-    else if (letter == '8')
-    {
-        counter8++;
-    }
-    else if (letter == '9')
-    {
-        counter9++;
-    }
+};
+
+Console.WriteLine( $" Paracownik z najwięskszą ilością punków: {employeeWithMaxResult.Name}" +" "+ 
+    $"{employeeWithMaxResult.Surname} " +  $"{employeeWithMaxResult.Age}"
+    + $" lat i otrzymał : {employeeWithMaxResult.Result}"); 
+    
 
 
+class Employee
+{
+    private List<int> score = new List<int>();
+    public Employee (string name, string surname,string age)
+    {
+        this.Name = name;
+        this.Surname = surname;
+        this.Age = age;
+        
+    }
+
+    public string Name { get; private set; }
+
+    public string Surname { get; private set; }
+
+    public string Age { get; private set; }
+
+    public int Result
+    {
+        get
+        {
+            return this.score.Sum();
+        }
+    }
+
+    public void AddScore (int number)
+    {
+        this.score.Add(number);
+
+    }
 }
-Console.WriteLine("0=>" + counter0);
-Console.WriteLine("1=>" + counter1);
-Console.WriteLine("2=>" + counter2);
-Console.WriteLine("3=>" + counter3);
-Console.WriteLine("5=>" + counter5);
-Console.WriteLine("6=>" + counter6);
-Console.WriteLine("7=>" + counter7);
-Console.WriteLine("8=>" + counter8);
-Console.WriteLine("9=>" + counter9);
-
-
-
-
-
-
-
